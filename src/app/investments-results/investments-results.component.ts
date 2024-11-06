@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { InvestmentResult } from '../investment.model';
 import { CurrencyPipe } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { InvestmentService } from '../investment.service';
 
 @Component({
   selector: 'app-investments-results',
@@ -10,7 +10,9 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './investments-results.component.css',
 })
 export class InvestmentsResultsComponent {
-  @Input() results?: InvestmentResult[];
+  private investmentService = inject(InvestmentService);
 
-  constructor() {}
+  get results() {
+    return this.investmentService.resultData;
+  }
 }

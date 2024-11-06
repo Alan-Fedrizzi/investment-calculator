@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { InvestmentService } from './investment.service';
 import { HeaderComponent } from './header/header.component';
-import { UserInputComponent } from './user-input/user-input.component';
-import { CalculatorService } from './calculator.service';
 import { InvestmentInput, InvestmentResult } from './investment.model';
 import { InvestmentsResultsComponent } from './investments-results/investments-results.component';
+import { UserInputComponent } from './user-input/user-input.component';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +11,4 @@ import { InvestmentsResultsComponent } from './investments-results/investments-r
   templateUrl: './app.component.html',
   imports: [HeaderComponent, UserInputComponent, InvestmentsResultsComponent],
 })
-export class AppComponent {
-  resultsData?: InvestmentResult[];
-
-  constructor(private calculatorService: CalculatorService) {}
-
-  onCanculateInvestmentResults(event: InvestmentInput) {
-    // console.log(event);
-    this.resultsData = this.calculatorService.calculateInvestmentResults(event);
-  }
-}
+export class AppComponent {}
